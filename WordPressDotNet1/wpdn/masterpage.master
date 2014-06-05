@@ -1,0 +1,118 @@
+﻿<%@ Master Language="VB" CodeFile="masterpage.master.vb" Inherits="masterpage" EnableTheming="true" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Untitled Page</title>
+    <link href="themes/default/css/mystyle.css" rel="stylesheet" type="text/css" />
+    
+    <asp:ContentPlaceHolder id="head" runat="server">
+
+    </asp:ContentPlaceHolder>
+	
+	</head>
+<body style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">
+    <form id="form1" runat="server">
+    <div>
+    	<table align="center" style="width: 1000px">
+			<tr>
+				<td colspan="2">
+				<h1 class="site_title" >
+                    <asp:Label ID="SiteTitle" runat="server"></asp:Label>
+                    </h1>
+				<p  class="site_subtitle">
+						<asp:Label ID="SiteSubTitle" runat="server"></asp:Label>
+&nbsp;</p>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+				<table style="width: 100%">
+					<tr>
+						<td class="table_alt_cizgi">
+						&nbsp;</td>
+						<td style="width: 58px">
+						<img alt="home" height="24" longdesc="home" src="themes/default/images/navigation/home.gif" width="58" /></td>
+						<td style="width: 70px">
+						<img alt="archive" height="24" longdesc="archive" src="themes/default/images/navigation/archive.gif" width="70" /></td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+			<tr>
+				<td class=" table_alt_cizgi" colspan="2">[ADSENSE1]</td>
+			</tr>
+			<tr>
+				<td style="width: 662px" valign="top" >
+    
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+				</td>
+				<td >
+				<table class="table_rightbox">
+					<tr>
+						<td class="right_box"><a class="right_box_title"> 
+						    <asp:Label ID="CatTitle" runat="server"></asp:Label>
+&nbsp;</a><br />
+						    <asp:Label ID="CatTxt" runat="server"></asp:Label>
+						<br />
+						<br />
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="right_box"><a class="right_box_title"> 
+						    <asp:Label ID="Adsense2Title" runat="server"></asp:Label>
+&nbsp;</a><br />
+						    <asp:Label ID="Adsense2Txt" runat="server"></asp:Label>
+						<br />
+						<br />
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="right_box"><a class="right_box_title"> 
+                            <asp:Label ID="ArchiveTitle" runat="server"></asp:Label>
+&nbsp;</a><br />
+						    <asp:Label ID="ArchiveTxt" runat="server"></asp:Label>
+						<br />
+						<br />
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="right_box"><a class="right_box_title"> 
+                            <asp:Label ID="LinksTitle" runat="server"></asp:Label>
+&nbsp;</a><br />
+						    <asp:Label ID="LinksTxt" runat="server"></asp:Label>
+						<br />
+						<br />
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">&nbsp;</td>
+			</tr>
+		</table>
+    <br />
+    
+    </div>
+    </form>
+</body>
+</html>

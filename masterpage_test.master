@@ -1,0 +1,65 @@
+﻿<%@ Master Language="VB" CodeFile="masterpage_test.master.vb" Inherits="masterpage_test" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+    <link href="images/background/flash-full-screen.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+    <form id="form1" runat="server">
+      <div id="container">
+    <div class="content">
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+       </div> <%--//content--%>
+    </div>  <%--//container--%>
+
+
+        
+<!-- flash background start -->
+<div id="bg">
+<script type="text/javascript">
+    var flashvars = {
+
+        //myFile: "a_bg_swf.swf", //set the file URL that flash will load
+        //myFileType: "flash", //set filetype (values: image, flash)
+        myFile: "images/background/a_bg_img.jpg", //set the file URL that flash will load
+        myFileType: "image", //set filetype (values: image, flash)
+        loadEffect: "Fade" //set load effect - options: "Fade", "Wipe", "Iris", "PixelDissolve", "Photo"
+    };
+    var params = {
+        id: "bg",
+        name: "bg",
+        wmode: "transparent",
+        menu: "false"
+    };
+    var attributes = {
+        id: "bg",
+        name: "bg",
+        wmode: "transparent",
+        menu: "false"
+    };
+
+    swfobject.embedSWF("images/background/bg.swf", "bg", "100%", "100%", "10.0.45.2", "images/background/expressInstall.swf", flashvars, params, attributes);
+</script>
+</div>
+<!-- flash background end -->
+
+
+
+    </form>
+
+
+
+
+</body>
+</html>

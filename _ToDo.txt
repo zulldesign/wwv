@@ -1,0 +1,3 @@
+* Kategori eklerken "?" olmayacak
+
+*tag lerde otomatik prefix olmasýn, prefix variable db den alýnsýn.

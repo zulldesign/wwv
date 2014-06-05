@@ -1,0 +1,12 @@
+﻿@import url(http://fonts.googleapis.com/css?family=Josefin+Sans+Std+Light);
+@import url(http://fonts.googleapis.com/css?family=Reenie+Beanie);
+*{margin:0; padding:0; border:0;}
+html,body{width:100%; height:100%;}
+#bg{position:fixed; left:0; top:0; z-index:1;}
+#container{position:absolute; width:100%; height:100%; min-width:620px; z-index:2;}
+
+
+
+/*#container .content{ color:#fff; }
+#container .content h1{font-family:'Josefin Sans Std Light', arial, serif; font-size:48px;}
+#container .content p{font-family:'Reenie Beanie', arial, serif; }*/

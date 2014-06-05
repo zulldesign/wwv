@@ -1,0 +1,10 @@
+﻿<%@ Page Title="" Language="VB" MasterPageFile="masterpage.master" AutoEventWireup="false" CodeFile="test_clear.aspx.vb" Inherits="hc_admin_test_clear" validateRequest=false   %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <br />
+    <asp:TextBox ID="TextBox1" runat="server" Height="119px" TextMode="MultiLine" 
+        Width="452px"></asp:TextBox>
+    <br />
+    <asp:Button ID="Button1" runat="server" Text="Button" />
+</asp:Content>
+

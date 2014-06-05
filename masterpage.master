@@ -1,0 +1,303 @@
+﻿<%@ Master Language="VB" CodeFile="masterpage.master.vb" Inherits="hc_MasterPage2" Debug="true" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+    <title></title>
+
+    <link href="themes/default/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="themes/default/css/wpdn-v1,0.css" rel="stylesheet" type="text/css" />
+ 
+<%--    
+
+    <script type="text/javascript" src="http://programmerz.net/tag_cloud.js"></script>
+    --%>  
+
+
+
+
+
+<%--  	<script type="text/javascript" src="http://programmerz.net/scripts/syntaxhighlighter/scripts/shCore.js"></script>
+	<script type="text/javascript" src="http://programmerz.net/scripts/syntaxhighlighter/scripts/shBrushBash.js"></script>
+	<script type="text/javascript" src="http://programmerz.net/scripts/syntaxhighlighter/scripts/shBrushCpp.js"></script>
+	<script type="text/javascript" src="http://programmerz.net/scripts/syntaxhighlighter/scripts/shBrushCSharp.js"></script>
+	<script type="text/javascript" src="http://programmerz.net/scripts/syntaxhighlighter/scripts/shBrushCss.js"></script>
+	<script type="text/javascript" src="http://programmerz.net/scripts/syntaxhighlighter/scripts/shBrushDelphi.js"></script>
+	<script type="text/javascript" src="http://programmerz.net/scripts/syntaxhighlighter/scripts/shBrushDiff.js"></script>
+	<script type="text/javascript" src="http://programmerz.net/scripts/syntaxhighlighter/scripts/shBrushGroovy.js"></script>
+	<script type="text/javascript" src="http://programmerz.net/scripts/syntaxhighlighter/scripts/shBrushJava.js"></script>
+	<script type="text/javascript" src="http://programmerz.net/scripts/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+	<script type="text/javascript" src="http://programmerz.net/scripts/syntaxhighlighter/scripts/shBrushPhp.js"></script>
+	<script type="text/javascript" src="http://programmerz.net/scripts/syntaxhighlighter/scripts/shBrushPlain.js"></script>
+	<script type="text/javascript" src="http://programmerz.net/scripts/syntaxhighlighter/scripts/shBrushPython.js"></script>
+	<script type="text/javascript" src="http://programmerz.net/scripts/syntaxhighlighter/scripts/shBrushRuby.js"></script>
+	<script type="text/javascript" src="http://programmerz.net/scripts/syntaxhighlighter/scripts/shBrushScala.js"></script>
+	<script type="text/javascript" src="http://programmerz.net/scripts/syntaxhighlighter/scripts/shBrushSql.js"></script>
+	<script type="text/javascript" src="http://programmerz.net/scripts/syntaxhighlighter/scripts/shBrushVb.js"></script>
+	<script type="text/javascript" src="http://programmerz.net/scripts/syntaxhighlighter/scripts/shBrushXml.js"></script>
+	<link type="text/css" rel="stylesheet" href="http://programmerz.net/scripts/syntaxhighlighter/styles/shCore.css"/>
+	<link type="text/css" rel="stylesheet" href="http://programmerz.net/scripts/syntaxhighlighter/styles/shThemeDefault.css"/>
+	<script type="text/javascript">
+	    SyntaxHighlighter.config.clipboardSwf = 'http://programmerz.net/scripts/syntaxhighlighter/scripts/clipboard.swf';
+	    SyntaxHighlighter.all();
+	</script>--%>
+
+
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <%-- full screen background start --%>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+        <link href="images/background/flash-full-screen.css" rel="stylesheet" type="text/css" />
+    <%-- full screen background end --%>
+    <%-- redirect to actual page on image search start --%>
+    <script type="text/javascript">    if (top.location != self.location) {  top.location = self.location;    }     </script>
+    <%-- redirect to actual page on image search end --%>
+
+    <link rel="shortcut icon" href="http://ex.gen.tr/images/ex.ico" /><link rel="icon" href="http://ex.gen.tr/images/ex.ico" />
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+
+
+<div id="container">  <!-- full screen flash background start -->
+<div class="content"> <!-- full screen flash background start -->
+
+
+	<asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="true" EnableScriptLocalization="true" />
+
+    	<table class="tablo_orta" style="width: 1000px" >
+			<tr>
+				<td class="table_alt_cizgi">
+				
+							<table class="transparent_white" style="width: 100%">
+										 <tr>
+											 <td style="width: 250px; vertical-align:middle" rowspan="2">
+                                             
+                                                 <asp:Label ID="LogoTxt" runat="server"></asp:Label>
+                                             
+                                                 <br />
+                                             
+  <iframe align="top" src="http://www.facebook.com/plugins/like.php?href=https://www.facebook.com/programmerz.net&amp;layout=button_count&amp;show_faces=false&amp;width=50&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; 
+						   width:90px; height:25px;" allowTransparency="true"></iframe>
+
+
+
+                                             </td>
+											 <td>
+											 &nbsp;<h1>
+					                    <asp:Label ID="SiteTitle" runat="server"></asp:Label>  </h1>
+											 <br />
+											 <p  class="site_subtitle">
+											<asp:Label ID="SiteSubTitle" runat="server"></asp:Label>
+											</p>
+											</td>
+										 </tr>
+										 <tr>
+											 <td style="height: 40px">
+											 
+												<table cellpadding="0" style="width: 100%;margin:0 ; border-collapse: collapse;">
+															<tr>
+																<td style="width: 9px">
+																<img alt="" height="38" src="themes/default/images/navigation/menu-sol.png" width="9" /></td>
+																<td style="background-color: #000000; color:White; padding-left:20px;">
+													
+                                                 <asp:Label ID="NavTxt" runat="server"></asp:Label>
+                                             
+                                                                </td>
+																<td style="width: 9px">
+																<img alt="" height="38" src="themes/default/images/navigation/menu-sag.png" width="9" /></td>
+															</tr>
+												</table>
+											 
+											 
+											 </td>
+										 </tr>
+										 </table>
+
+				
+							<br />
+						<asp:Label ID="AdSense1Txt" runat="server"></asp:Label>
+
+				
+				<br />
+				</td>
+			</tr>
+			<tr>
+				<td>
+				<table style="width: 100%">
+					<tr>
+						<td style="vertical-align:top">
+						<br />
+						<asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server" />
+
+						</td>
+						<td  class="right_panel">
+                        <br />
+				<table class="table_rightbox">
+					<tr>
+						<td class="right_box">
+						    <asp:Label cssclass="right_box_title" ID="SearchTitle" runat="server"></asp:Label>
+							<br />
+                                <asp:Panel runat="server" ID="DefButton"  DefaultButton="ImageButton1">
+									<table style="width: 100%">
+										<tr>
+											<td>
+											<asp:TextBox ID="SearchTxt" runat="server" style=" vertical-align:middle" 
+                                Width="95%" Height="20px"></asp:TextBox>
+											</td>
+											<td style="width: 60px">
+											<asp:ImageButton ID="ImageButton1" runat="server" alt="Go" height="26" 
+                                ImageUrl="themes/default/images/navigation/go.gif" 
+                                style="vertical-align:middle" width="60" />
+											</td>
+										</tr>
+									</table>
+                                </asp:Panel>
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+
+					<tr>
+						<td class="right_box">
+						    <asp:Label class="right_box_title" ID="Adsense2Title" runat="server"></asp:Label><br />
+						    <asp:Label ID="Adsense2Txt" runat="server"></asp:Label>
+						<br />
+						<br />
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+
+					<tr>
+						<td class="right_box">
+						    <asp:Label class="right_box_title" ID="CatTitle" runat="server"></asp:Label>
+						<br />
+
+
+					    <div  style="width:100%;  overflow:auto; ">
+		            		 <asp:TreeView CssClass="TreeStyle"  ID='TreeView1' runat='server' Width='100%' 
+		                                Height='100%' ForeColor='DimGray' ShowLines="True">
+		                     </asp:TreeView>
+						</div>    
+                                                
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="right_box">
+                            <asp:Label  class="right_box_title" ID="ArchiveTitle" runat="server"></asp:Label><br />
+						    <asp:Label ID="ArchiveTxt" runat="server"></asp:Label>
+						<br />
+						<br />
+						</td>
+					</tr>
+                     <tr>
+						<td>&nbsp;</td>
+					</tr>
+                    <tr>
+						<td class="right_box">
+                            <asp:Label class="right_box_title" ID="TagTitle" runat="server"></asp:Label><br />
+						    <asp:Label ID="TagTxt" runat="server"></asp:Label>
+						<br />
+						<br />
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="right_box">
+                            <asp:Label class="right_box_title" ID="LinksTitle" runat="server"></asp:Label><br />
+						    <asp:Label ID="LinksTxt" runat="server"></asp:Label>
+						<br />
+						<br />
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+						</td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				
+				
+<table cellpadding="0" style="width: 100%;margin:0 ; border-collapse: collapse;">
+															<tr>
+																<td style="width: 9px">
+																<img alt="" height="38" src="themes/default/images/navigation/menu-sol.png" width="9" /></td>
+																<td style="  background-color: #000000;color:White; padding-left:20px; text-align:center;">
+                                                                <table style="width:100%"><tr><td>
+						    <asp:Label ID="CopyrightTxt" runat="server"></asp:Label>
+                        <asp:Label ID="AnalyticsTxt" runat="server"></asp:Label>
+						                                            </td>
+                                                                    <td style=" text-align:right; padding-right:10px; " > 
+                        
+                        <a href="http://validator.w3.org/check?uri=referer" target="_blank"><img   alt="Valid CSS" class="style1" src="themes/default/images/utils/xhtml_valid.gif" /></a>
+                        <a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank"><img   alt="Valid CSS" class="style1" src="themes/default/images/utils/css.valid.gif" /></a>
+                        <asp:Label ID="FootImgLink" runat="server"></asp:Label>
+                        <br />
+                        <asp:Label ID="TitleForSEOTxt" runat="server"></asp:Label>
+                        </td></tr></table>
+						                                        </td>
+																<td style="width: 9px">
+																<img alt="" height="38" src="themes/default/images/navigation/menu-sag.png" width="9" /></td>
+															</tr>
+												</table>				
+				<br />
+				<br />
+                
+				</td>
+			</tr>
+		</table>
+
+</div> <!-- full screen flash background end -->
+</div> <!-- full screen flash background end -->
+
+
+
+        
+
+
+
+
+        <asp:Label ID="FlashBgTxt" runat="server" ></asp:Label>
+
+
+
+
+
+
+
+
+        </div>
+    </form>
+
+
+
+<div style="height: 0px; width:0px;   overflow: auto;"> 
+    <asp:Label ID="CounterSTR" runat="server" ></asp:Label>
+
+</div>
+
+
+
+
+</body>
+</html>

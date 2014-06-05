@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /redirect.aspx?id=*
+Disallow: /topic.aspx?id=*
+Disallow: /recipes/*
+Disallow: /recipes/
+Allow: /
+

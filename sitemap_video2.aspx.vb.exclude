@@ -1,0 +1,179 @@
+﻿
+Partial Class sitemap2
+    Inherits System.Web.UI.Page
+
+    Dim MyDB As New db_acc_v21_data
+    Dim Tarihimiz, TarihEksi1
+
+    Dim STR As New StringBuilder
+
+    Dim RecordsSTR, KacinciKayit
+    Dim LinkSayisi As Integer
+    Dim UrlWords
+    Dim BasePath
+
+
+    Protected Sub Page_Init(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Init
+        Dim MyPort = Request.ServerVariables("SERVER_PORT") : Dim MySec = Request.ServerVariables("SERVER_PORT_SECURE") : Dim MyServ = Request.ServerVariables("SERVER_NAME") : Dim MyAppPath = Request.ApplicationPath
+        BasePath = fn_general_v30.PathYaz(MyPort, MySec, MyServ, MyAppPath)
+    End Sub
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+
+
+        Tarihimiz = DateTime.Now.ToString("yyy-MM-dd")
+
+        If Not Page.IsPostBack Then
+            WriteSiteMap()
+
+        End If
+
+
+
+    End Sub
+
+    Sub WriteSiteMap()
+        SiteMapStart()
+        SiteMapData_Content()
+        SiteMapEnd()
+
+
+        Response.ContentType = "text/xml"
+        Response.Write(STR.ToString)
+        Response.End()
+    End Sub
+
+
+
+    Sub SiteMapStart()
+        Dim MyTxt
+        STR.AppendLine("<urlset xmlns=""http://www.sitemaps.org/schemas/sitemap/0.9""" & vbCrLf)
+        STR.AppendLine("        xmlns:video=""http://www.google.com/schemas/sitemap-video/1.1""> " & vbCrLf)
+        STR.AppendLine("           <!-- Created with eXtreme SiteMap Builder - www.eX.gen.tr  --> " & vbCrLf)
+
+    End Sub
+    Sub SiteMapEnd()
+        Dim MyTxt
+        STR.AppendLine("</urlset>" & vbCrLf)
+        STR.AppendLine("<!-- Total Link: " & LinkSayisi & " -->" & vbCrLf)
+
+    End Sub
+
+
+
+
+
+    Sub SiteMapData_Content()
+
+        Dim TblName = "content"
+        Dim ColName = "top 10 (content.id,content.content_title,content.content,content.author,content.content_date,content.keywords,content.categories)"
+        'im ColName =   0ontent.id,1ontent.content_title,2ontent.content,3ontent.author,4ontent.content_date,5ontent.keywords,6ategories.cat_name"
+        Dim OrderBy = "content_date DESC"
+
+
+        Dim SqlStr = MyDB.DB_SelectSTR(TblName, ColName, , OrderBy)
+
+        Dim DS As System.Data.DataSet
+        DS = MyDB.QueryDataSet(SqlStr)
+
+
+        ListView1.DataSource = DS.Tables(0).DefaultView
+        ListView1.DataBind()
+        DS.Dispose()
+
+
+    End Sub
+
+
+
+
+    Sub UrlEkle(ByVal vsayfa, ByVal vthumb, ByVal vtitle, ByVal vdesc, ByVal vloc, ByVal vsure, ByVal vkeyw, ByVal vcat)
+        vloc = Replace(vloc, "&", "&amp;")
+        vsayfa = Replace(vsayfa, "&", "&amp;")
+
+        'vsayfa = ".html"
+        'vthumb = "http://www.example.com/thumbs/123.jpg"
+        'vtitle = "Grilling steaks for summer"
+        'vdesc = "Grilling steaks for suasdfasdfammer"
+        'vloc = "http://safd.flv"
+        'Dim vPath = BasePath & "images/intro-" & vid & ".flv"
+        'vsure = "600"
+
+        Dim vrate = fn_general_v30.RandomNumber2(5) & "." & fn_general_v30.RandomNumber2(10)
+        Dim pPath = BasePath & ""
+
+        Dim keyw() = vkeyw.ToString.Split(",")
+        Dim i, MyKeyw
+        For i = 0 To UBound(keyw)
+            MyKeyw = MyKeyw & "<video:tag>" & keyw(i) & "</video:tag>"
+        Next
+
+        vsure = fn_general_v30.RandomNumber2(600, 400)
+
+        Dim MyTxt
+        STR.AppendLine("   <url> " & vbCrLf)
+        STR.AppendLine("     <loc>" & vsayfa & "</loc>" & vbCrLf)
+        STR.AppendLine("     <video:video>" & vbCrLf)
+        STR.AppendLine("       <video:thumbnail_loc>" & vthumb & "</video:thumbnail_loc> " & vbCrLf)
+        STR.AppendLine("       <video:title>" & vtitle & "</video:title>" & vbCrLf)
+        STR.AppendLine("       <video:description>" & vdesc & "</video:description>" & vbCrLf)
+        STR.AppendLine("       <video:content_loc>" & vloc & "</video:content_loc>" & vbCrLf)
+        'STR.AppendLine "       <video:player_loc allow_embed=""yes"" autoplay=""ap=1"">http://www.example.com/videoplayer.swf?video=123</video:player_loc>" & vbCrLf
+
+        STR.AppendLine("       <video:duration>" & vsure & "</video:duration>" & vbCrLf)
+        STR.AppendLine("       <video:live>no</video:live>" & vbCrLf)
+        'STR.AppendLine "       <video:expiration_date>2009-11-05T19:20:30+08:00</video:expiration_date>" & vbCrLf
+        STR.AppendLine("       <video:rating>" & vrate & "</video:rating> " & vbCrLf)
+        'STR.AppendLine "       <video:view_count>12345</video:view_count>    " & vbCrLf
+        'STR.AppendLine "       <video:publication_date>2007-11-05T19:20:30+08:00</video:publication_date>" & vbCrLf
+        STR.AppendLine("       " & MyKeyw & vbCrLf)
+        STR.AppendLine("       <video:category>" & vcat & "</video:category>" & vbCrLf)
+        STR.AppendLine("       <video:family_friendly>yes</video:family_friendly>   " & vbCrLf)
+        'STR.AppendLine "       <video:restriction relationship=""allow"">IE GB US CA</video:restriction> " & vbCrLf
+        'STR.AppendLine "       <video:gallery_loc title=""Cooking Videos"">http://cooking.example.com</video:gallery_loc>" & vbCrLf
+        'STR.AppendLine "       <video:price currency=""EUR"">1.99</video:price>" & vbCrLf
+        'STR.AppendLine "       <video:requires_subscription>yes</video:requires_subscription>" & vbCrLf
+        'STR.AppendLine "       <video:uploader info=""http://www.example.com/users/grillymcgrillerson"">GrillyMcGrillerson</video:uploader>" & vbCrLf
+
+        STR.AppendLine("     </video:video> " & vbCrLf)
+        STR.AppendLine("   </url> " & vbCrLf)
+
+
+        LinkSayisi = LinkSayisi + 1
+    End Sub
+
+    Public Sub PagePropertiesChanging(ByVal sender As Object, ByVal e As PagePropertiesChangingEventArgs)
+        RecordsSTR = ""
+
+        DataPager1.SetPageProperties(e.StartRowIndex, e.MaximumRows, False)
+        ListView1.DataBind()
+    End Sub
+
+
+    Public Sub ComputeSum(ByVal sender As Object, ByVal e As ListViewItemEventArgs)
+        If e.Item.ItemType = ListViewItemType.DataItem Then
+            KacinciKayit = KacinciKayit + 1
+            Dim dataItem As ListViewDataItem = CType(e.Item, ListViewDataItem)
+            Dim rowView As System.Data.DataRowView = CType(dataItem.DataItem, System.Data.DataRowView)
+
+            Dim R(8), i
+            For i = 0 To 6
+                R(i) = rowView(i).ToString()
+                R(i) = fn_general_v30.DB_ReturnText(R(i))
+            Next
+
+
+            Dim HttpName = Session("http_name")
+
+
+            Dim MyId = R(0).ToString : Dim MyCat = R(6).ToString : Dim MyTit = R(1).ToString : Dim MyDesc = Left(fn_general_v30.HtmlTemizle(R(2).ToString), 500) : Dim MyKeyw = R(5).ToString
+            Dim Linkimiz = wpdn_v10.MakeURL("topic", MyCat, MyTit, MyId, BasePath)
+            Dim ImgURL = BasePath & "images/intro-" & MyId & ".gif"
+            Dim vURL = BasePath & "images/intro-" & MyId & ".flv"
+            Dim vTitle = MyCat & ": " & MyTit
+            UrlEkle(Linkimiz, ImgURL, vTitle, MyDesc, vURL, "600", MyKeyw, MyCat)
+
+        End If
+    End Sub
+
+End Class

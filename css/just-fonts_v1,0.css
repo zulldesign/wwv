@@ -1,0 +1,98 @@
+﻿a { text-decoration: none;   }
+a:hover {  text-decoration: underline; }
+
+h { text-decoration:none; }
+img { border-style: none;
+	border-color: inherit;
+	border-width: 0px;
+	text-align: left;
+}
+
+
+
+
+
+.baslik { font-size: 18px; 	margin-top: 0px;  	margin-bottom: 5px; text-decoration:none; text-align:center; color:White; }
+.ortala { text-align: center; }
+.beyazorta { text-align: center;color:White;  text-decoration:none;}
+
+.trebuchet {  font-family: Trebuchet MS; }
+
+form {
+	padding: 0px;
+	margin: 0px;
+}
+body {
+	margin: 10px;
+	margin-right: 0px;
+	padding: 0px;
+	font-family: Trebuchet MS;
+	font-size:14px;
+}
+
+
+.sag { text-align:right; }
+.sol { text-align:left; }
+.mid { vertical-align:middle; }
+
+/* AC = Altı Çizili */
+a.mavi_ac { color: Blue;  } 
+a.mavi_ac:hover {  text-decoration: underline; }
+a.beyaz_ac { color: white;  } 
+a.beyaz_ac:hover {  text-decoration: underline; }
+
+a.warn {  font-weight: bold; font-style: italic ; color: Red; }
+
+a.saat { font-family: Trebuchet MS; font-size: 18px; font-weight: bold; font-style: italic }
+a.grisiyah10 { 	font-size: 10px; 	font-weight: bold; 	color: #515155; 	font-family: Trebuchet MS; }
+a.grisiyah10:hover { 	color: black; }
+
+a.siyahturuncu12 { 	font-size: 12px; 	font-weight: bold; 	color: black; 	font-family: Trebuchet MS; }
+a.siyahturuncu12:hover { color: #FF6600;	 }
+
+	
+a.mavituruncu12 { 	font-size: 12px; 	font-weight: bold; 	color: #3D71B2; 	font-family: Trebuchet MS; }
+a.mavituruncu12:hover { color: #FF6600;	 }	
+
+a.beyazturuncu12 { 	font-size: 12px; 	 	color: #FFFFFF; 	font-family: Trebuchet MS; }
+a.beyazturuncu12:hover { color: #FF6600;	 }	
+	
+a.grisiyah12 { 	font-size: 12px; 	font-weight: bold; 	color: #515155; 	font-family: Trebuchet MS; }
+a.grisiyah12:hover { 	color: black; }
+
+a.turuncu12 { 	font-size: 12px; 	font-weight: bold; 	color: #FF6600; 	font-family: Trebuchet MS; }
+a.turuncu12:hover { 	color: black; }
+
+
+a.acikgri-koyugri10 {	font-size: 10px; 	color: #949494; }
+a.acikgri-koyugri10:hover {	color: #515155; }
+
+a.griacikbold11 { 	font-size: 11px; 	font-weight: bold; 	color: #515155;}
+a.griacikbold11:hover { 	color: #949494; }
+
+a.kirmizikoyubold11 { 	font-size: 11px; 	font-weight: bold; 	color: #B71B1B; }
+a.kirmizikoyubold11:hover { 	color: #680F0F; }
+
+a.siyahgri14 { 	font-size: 14px; 	font-weight: bold; 	color: black; }
+a.siyahgri14:hover {	color: #515155; }
+
+a.siyahgri14orta { 	font-size: 14px; 	font-weight: bold; 	color: black; text-align: center; }
+a.siyahgri14orta:hover {	color: #515155; }
+
+
+a.siyahgri18 { 	font-size: 18px; 	font-weight: bold; 	color: black; }
+a.siyahgri18:hover {	color: #515155; }
+
+
+a.normalgriacik11 { 	color: #515155; }
+a.normalgriacik11:hover {	color: #949494; }
+
+a.normalkirmizikoyu12 { 	color: #B71B1B; }
+a.normalkirmizikoyu12:hover {	color: #680F0F; }
+
+
+
+
+td.sag { text-align:right; }
+td.sol { text-align:left; }
+td.ortala {	text-align: center; 	}

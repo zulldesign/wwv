@@ -1,0 +1,110 @@
+﻿Imports fn_general_v30
+Imports db_acc_wpdn_v17
+Imports wpdn_v10
+Imports html_tidy_v10
+
+Partial Class admin_article
+    Inherits System.Web.UI.Page
+
+
+    Sub RegisterScripts()
+        Button1.Attributes.Add("onclick", "return confirm('Bilgileri kaydetmek istediğinize emin misiniz?');")
+    End Sub
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Me.Title = "Admin Panel | Add Article"
+        RegisterScripts()
+
+        ConfigFckEditor()
+
+        If Not Page.IsPostBack Then
+
+            FillForm()
+        End If
+
+
+
+    End Sub
+    Sub ConfigFckEditor()
+
+        Dim FCKFullPath = FCKPathYaz(Request.ServerVariables("SERVER_PORT"), Request.ServerVariables("SERVER_PORT_SECURE"), Request.ServerVariables("SERVER_NAME"), Request.ApplicationPath)
+        'Response.Write(FCKFullPath)
+        ContentFCK.BasePath = FCKFullPath
+        ContentFCK.ImageBrowserURL = FCKFullPath & FCKImageBrowserURL & FCKFullPath & FCKConnectorPath
+        ContentFCK.ID = FCKID & "1"
+        ContentFCK.SkinPath = FCKSkinPath
+        ContentFCK.ToolbarSet = FCKToolbarSet
+        Session("FCKeditor:UserFilesPath") = FCKSessionUserFilesPath
+
+        'Response.Write(FCKFullPath)
+        SummaryFCK.BasePath = FCKFullPath
+        SummaryFCK.ImageBrowserURL = FCKFullPath & FCKImageBrowserURL & FCKFullPath & FCKConnectorPath
+        SummaryFCK.ID = FCKID & "2"
+        SummaryFCK.SkinPath = FCKSkinPath
+        SummaryFCK.ToolbarSet = FCKToolbarSet
+
+    End Sub
+
+
+
+    Sub FillForm()
+        TarihTxt.Text = DateTime.Now.ToString("dd.MM.yyyy hh:mm:ss")
+
+        WriteCategories()
+    End Sub
+
+
+    Sub WriteCategories()
+        Dim TblName = "categories"
+        Dim ColName = "id,cat_name"
+
+        Dim DR As System.Data.OleDb.OleDbDataReader
+        DR = DB_SELECT(TblName, ColName)
+
+        If DR.HasRows = "False" Then
+            Exit Sub
+        End If
+        Dim Result
+        While DR.Read = True
+            Result = Result & DR.GetValue(1).ToString & ", "
+        End While
+        DR.Close()
+
+        KategoriTxt.Text = Result
+        KategoriTxt.Text = "Reviews"
+    End Sub
+
+
+
+    Protected Sub Button1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles Button1.Click
+
+        If KeywTxt.Text = "" Then
+            MsgBox("Keywords gir")
+            Exit Sub
+        End If
+
+        Dim q(8)
+
+        q(1) = BaslikTxt.Text
+        q(2) = ASCIItoTextHTML(DB_ClearText(SummaryFCK.Value.ToString))
+        q(3) = ASCIItoTextHTML(DB_ClearText(ContentFCK.Value.ToString))
+        q(4) = YazarTxt.Text
+        q(5) = TarihForDB(TarihTxt.Text)
+        q(6) = KategoriTxt.Text
+        q(7) = KeywTxt.Text
+
+        q(8) = TextToURL(KeywTxt.Text)
+
+        'q(2) = HTML_Tidy(q(2))
+        'q(3) = HTML_Tidy(q(3))
+
+        Dim TblName = "content"
+        Dim ColNames = "content_title,content_intro,content,author,content_date,categories,keywords,keywords_url"
+        Dim ValNames = "'" & q(1) & "','" & q(2) & "','" & q(3) & "','" & q(4) & "'," & q(5) & ",'" & q(6) & "','" & q(7) & "','" & q(8) & "'"
+        DB_INSERT(TblName, ColNames, ValNames)
+
+        WarnTxt.Text = Warn("Makale Eklendi!")
+
+    End Sub
+End Class
+

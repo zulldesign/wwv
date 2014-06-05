@@ -1,0 +1,21 @@
+1-add plugin to fckconfig.js
+FCKConfig.Plugins.Add( 'drupalbreak') ;
+
+2-add the button to the default toolbar:
+FCKConfig.ToolbarSets["Default"] = [
+['Source','DocProps','-','Save','NewPage','Preview','-','Templates'],
+['Cut','Copy','Paste','PasteText','PasteWord','-','Print','SpellCheck'],
+['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
+['Form','Checkbox','Radio','TextField','Textarea','Select','Button','ImageButton','HiddenField'],
+'/',
+['Bold','Italic','Underline','StrikeThrough','-','Subscript','Superscript'],
+['OrderedList','UnorderedList','-','Outdent','Indent'],
+['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull'],
+['Link','Unlink','Anchor'],
+['Image','Flash','Table','Rule','Smiley','SpecialChar','PageBreak'],
+'/',
+['Style','FontFormat','FontName','FontSize'],
+['TextColor','BGColor'],
+['FitWindow','-','About'],
+['DrupalBreak'] //added by Serkan
+] ;

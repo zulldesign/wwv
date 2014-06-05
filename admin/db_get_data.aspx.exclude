@@ -1,0 +1,15 @@
+﻿<%@ Page Title="" Language="VB" MasterPageFile="masterpage.master" AutoEventWireup="false" CodeFile="db_get_data.aspx.vb" Inherits="hc_admin_db_get_data" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <p>
+        <br />
+        <asp:Button ID="Button1" runat="server" Text="Get First 50!" />
+        <br />
+        <br />
+        <asp:Label ID="TotalTxt" runat="server"></asp:Label>
+        <br />
+        <br />
+        <asp:Label ID="WarnTxt" runat="server"></asp:Label>
+    </p>
+</asp:Content>
+

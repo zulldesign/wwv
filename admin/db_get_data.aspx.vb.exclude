@@ -1,0 +1,101 @@
+﻿Imports fn_general_v30
+Imports html_tidy_v10
+
+Partial Class hc_admin_db_get_data
+    Inherits System.Web.UI.Page
+
+    Dim MyDB As New db_acc_v21_data
+    Dim MyDBTo As New db_acc_v21_data_to 'database_to
+
+    Protected Sub Button1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles Button1.Click
+        GetFromDB()
+
+
+
+        WriteTotal()
+    End Sub
+
+
+    Sub GetFromDB()
+
+        Dim TblName = "content"
+        Dim ColName = "[id],	content_title,	content_intro,	content,	author,	content_date,	categories,	keywords,	keywords_url"
+        'Dim ColName = 0id],	1ontent_title,	2ontent_intro,	3ontent,	4uthor,	5ontent_date,	6ategories,	7eywords,	8eywords_url"
+
+
+        Dim SqlStr = MyDBTo.DB_SelectSTR(TblName, ColName)
+        Dim DT As System.Data.DataTable
+        DT = MyDBTo.QueryDataTable(SqlStr)
+
+
+
+        Dim MyIDS As New Collection
+        Dim KS = DT.Rows.Count 'Kayıt Sayısı
+        If KS > 0 Then
+            For i = 0 To KS - 1
+                If i = wpdn_v10.DBtoCount Then Exit For
+
+                Dim MyVal = DT.Rows(i).Item(1).ToString()
+                SaveToDB(DT.Rows(i).Item(1).ToString(), DT.Rows(i).Item(2).ToString(), DT.Rows(i).Item(3).ToString(), DT.Rows(i).Item(4).ToString(), DT.Rows(i).Item(5).ToString(), DT.Rows(i).Item(6).ToString(), DT.Rows(i).Item(7).ToString(), DT.Rows(i).Item(8).ToString())
+                DelFromDB(DT.Rows(i).Item(0).ToString())
+
+            Next
+
+        End If
+
+
+        WarnTxt.Text = "Done!"
+        If KS < wpdn_v10.DBtoCount Then WarnTxt.Text = Warn("DB is EMPTY!")
+
+
+    End Sub
+
+    Sub SaveToDB(ByVal q1, ByVal q2, ByVal q3, ByVal q4, ByVal q5, ByVal q6, ByVal q7, ByVal q8)
+
+        q1 = fn_general_v30.DB_ClearText(q1) : q2 = fn_general_v30.DB_ClearText(q2) : q3 = fn_general_v30.DB_ClearText(q3) : q4 = fn_general_v30.DB_ClearText(q4)
+        q5 = fn_general_v30.TarihForDB(DateTime.Now) : q6 = fn_general_v30.DB_ClearText(q6) : q7 = fn_general_v30.DB_ClearText(q7) : q8 = fn_general_v30.DB_ClearText(q8)
+
+
+        Dim TblName = "content"
+        Dim ColNames = "content_title,	content_intro,	content,	author,	content_date,	categories,	keywords,	keywords_url"
+        'Dim ColName = 	1ontent_title,	2ontent_intro,	3ontent,	4uthor,	5ontent_date,	6ategories,	7eywords,	8eywords_url"
+        Dim ValNames = "'" & q1 & "','" & q2 & "','" & q3 & "','" & q4 & "'," & q5 & ",'" & q6 & "','" & q7 & "','" & q8 & "'"
+
+        Dim SqlStr = MyDB.DB_InsertSTR(TblName, ColNames, ValNames)
+        MyDB.QueryExecuteNonQuery(SqlStr)
+
+
+    End Sub
+
+    Sub DelFromDB(ByVal MyID)
+
+        Dim TblName = "content"
+        Dim WhereStr = "[id]=" & MyID
+
+        Dim SqlSTR = MyDBTo.DB_DeleteSTR(TblName, WhereStr)
+        MyDBTo.QueryExecuteNonQuery(SqlSTR)
+
+    End Sub
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        WriteTotal()
+    End Sub
+    Sub WriteTotal()
+
+        Dim TblName = "content"
+        Dim ColName = "count(id)"
+
+
+        Dim SqlStr = MyDB.DB_SelectSTR(TblName, ColName)
+        Dim KS As Integer = MyDB.QueryExecuteScalar(SqlStr)
+     
+
+        If KS = 0 Then
+            Exit Sub
+        Else
+
+            TotalTxt.Text = "Total: " & KS & " Articles."
+        End If
+
+    End Sub
+End Class

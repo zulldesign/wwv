@@ -1,0 +1,20 @@
+﻿<%@ Page Title="" Language="VB" MasterPageFile="masterpage.master" AutoEventWireup="false" CodeFile="check_duplicate.aspx.vb" Inherits="admin_check_duplicate" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <p>
+        <asp:Label ID="Label1" runat="server"></asp:Label>
+        <br />
+        <br />
+        <asp:Button ID="CheckTitle" runat="server" Text="Check Duplicate Title" />
+        <asp:Button ID="CheckContent" runat="server" Text="Check Duplicate Desc" />
+        <asp:Button ID="Button3" runat="server" Text="Check Empty" />
+        <br />
+        <br />
+        <br />
+        <asp:Button ID="CheckTitle1" runat="server" Text="Delete Duplicate Title" />
+        <br />
+        <br />
+        <asp:Button ID="CheckTitle0" runat="server" Text="Close DB Connection" />
+    </p>
+</asp:Content>
+

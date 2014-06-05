@@ -1,0 +1,70 @@
+﻿<%@ Master Language="VB" CodeFile="masterpage.master.vb" Inherits="admin_masterpage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+    <title></title>
+
+    <link href="../css/just-fonts_v1,0.css" rel="stylesheet" type="text/css" />
+
+
+
+</head>
+<body style="margin-top:0px;margin-left:0px;">
+    <form id="form1" runat="server">
+    	<p>
+		<table style="width: 100%">
+			<tr>
+				<td style="width: 227px">&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td style="width: 227px">&nbsp;</td>
+				<td>
+            <asp:Label ID="AnaSayfa" runat="server"></asp:Label>
+            		</td>
+				<td>
+            <asp:Label ID="KullTxt" runat="server"></asp:Label>
+            		</td>
+			</tr>
+			<tr>
+				<td style="width: 227px" valign="top">
+          
+                        <asp:Panel  ID="Panel1" runat="server" Height="600px" ScrollBars="Both" Width="200px">
+                       <asp:TreeView CssClass="TreeStyle"  ID='TreeView1' runat='server' Width='100%' 
+                                Height='100%' ForeColor='DimGray' ShowLines="True">
+                       </asp:TreeView>
+                        </asp:Panel>
+            
+            	</td>
+				<td colspan="2" valign="top">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            	</td>
+			</tr>
+			<tr>
+				<td style="width: 227px">&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td style="width: 227px">&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td style="width: 227px">&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+		</table>
+		<br />
+		</p>
+    </form>
+            
+
+</body>
+
+</html>

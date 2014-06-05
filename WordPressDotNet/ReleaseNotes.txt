@@ -1,0 +1,7 @@
+WordPressDotNet v0,2,0 =============================
+	- Paging system renewed. (Old one needs aspcompat=true)
+	- DB unstabilites fixed.
+	- Admin menu designed.
+
+WordPressDotNet v0,1,0 =============================
+	- .NET Framework 3.5 appended.

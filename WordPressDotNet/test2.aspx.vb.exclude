@@ -1,0 +1,55 @@
+﻿Imports db_access_v15
+Imports fn_general_v17
+Imports System.Data.OleDb
+
+Partial Class test2
+    Inherits System.Web.UI.Page
+
+
+
+
+    Dim DatabaseSifre = "extremeteam"
+
+
+
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        WriteTopic()
+    End Sub
+
+    Sub WriteTopic()
+
+        Dim TopicId = Request.QueryString("id")
+
+
+        'Dim TblName = "categories"
+        ''Dim ColName = "id,content_title,content,author,content_date,keywords,categories"
+        ''Dim TblName = "content,categories"
+        ''Dim WhereStr = "id=" & TopicId & " "
+        'Dim ColName = "TOP 5 cat_name"
+
+
+
+        'Dim DR As System.Data.OleDb.OleDbDataReader
+        'DR = DB_SELECT( TblName, ColName)
+
+
+        Dim conn As OleDbConnection, comm As OleDbCommand
+        conn = New OleDbConnection("PROVIDER=Microsoft.Jet.OLEDB.4.0;DATA SOURCE=" + DBPath & ";Jet OLEDB:Database Password=" & DatabaseSifre & "")
+        'Dim SQL = "SELECT TOP 5 cat_name from (select top 10 cat_name from categories)"
+        Dim SQL = "SELECT cat_name from categories limit 6"
+        comm = New OleDbCommand(SQL, conn)
+        conn.Open()
+
+        Dim dr As OleDbDataReader
+        dr = comm.ExecuteReader
+
+        While DR.Read = True
+            Response.Write(DR.GetValue(0).ToString & "<br>")
+        End While
+
+
+
+
+    End Sub
+End Class
